@@ -95,14 +95,9 @@ def create_matcher(backend):
 class LidarImageGenerator:
     def __init__(self, config):
         self.K, self.h, self.w = config.camera.K, config.camera.height, config.camera.width
-        self.max_pts = config.max_lidar_points
     
     def generate(self, points, T, radius=1):
-        # Subsample early
-        if len(points) > self.max_pts:
-            idx = np.random.choice(len(points), self.max_pts, replace=False)
-            points = points[idx]
-        
+        # Use ALL points (no subsampling)
         xyz = points[:, :3]
         intensity = points[:, 3] if points.shape[1] >= 4 else np.linalg.norm(xyz, axis=1)
         
