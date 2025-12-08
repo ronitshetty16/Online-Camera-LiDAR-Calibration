@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Online Camera-LiDAR Extrinsic Calibration with Metric Tracking & Plotting
+Online Camera-LiDAR Extrinsic Calibration
 """
 
 import numpy as np
